@@ -157,7 +157,7 @@
       </thingDefs>
     </fixedIngredientFilter>
     <products>
-      <Proj_GrenadeFlashbang>10</Proj_GrenadeFlashbang>
+      <Weapon_GrenadeFlashbang>10</Weapon_GrenadeFlashbang>
     </products>
   </RecipeDef>
 
