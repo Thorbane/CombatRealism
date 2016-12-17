@@ -29,6 +29,7 @@
     </thingCategories>
     <stackLimit>500</stackLimit>
     <smallVolume>true</smallVolume>
+    <deepCommonality>1</deepCommonality>
     <stuffProps>
       <categories>
         <li>Metallic</li>
@@ -76,6 +77,7 @@
     </thingCategories>
     <stackLimit>500</stackLimit>
     <smallVolume>true</smallVolume>
+    <deepCommonality>0.5</deepCommonality>
     <stuffProps>
       <stuffAdjective>golden</stuffAdjective>
       <categories>
@@ -125,6 +127,7 @@
     <thingCategories>
       <li>ResourcesRaw</li>
     </thingCategories>
+    <deepCommonality>4</deepCommonality>
     <stuffProps>
       <categories>
         <li>Metallic_Weapon</li>
@@ -168,6 +171,7 @@
     <thingCategories>
       <li>ResourcesRaw</li>
     </thingCategories>
+    <deepCommonality>1</deepCommonality>
     <stuffProps>
       <categories>
         <li>Metallic_Weapon</li>
@@ -288,6 +292,7 @@
     </thingCategories>
     <stackLimit>500</stackLimit>
     <smallVolume>true</smallVolume>
+    <deepCommonality>0.5</deepCommonality>
     <stuffProps>
       <categories>
         <li>Metallic_Weapon</li>
@@ -335,6 +340,7 @@
     </thingCategories>
     <stackLimit>500</stackLimit>
     <smallVolume>true</smallVolume>
+    <deepCommonality>0.5</deepCommonality>
     <stuffProps>
       <categories>
         <li>Stony</li>
