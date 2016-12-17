@@ -26,7 +26,7 @@
       </thingDefs>
     </fixedIngredientFilter>
     <products>
-      <Components>1</Components>
+      <Component>1</Component>
     </products>
 		<skillRequirements>
 			<li>

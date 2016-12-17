@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
 using RimWorld;
+using UnityEngine;
 using Verse;
 using Verse.AI;
-using UnityEngine;
 
 namespace Combat_Realism
 {
@@ -90,7 +87,7 @@ namespace Combat_Realism
                                     x => !x.IsForbidden(pawn) && pawn.CanReserve(x));
                                 if (curThing != null)
                                 {
-                                    if (!curSlot.Def.IsNutritionSource && numCarried / curSlot.Count <= 0.5f) curPriority = ItemPriority.LowStock;
+                                    if (!curSlot.Def.IsNutritionGivingIngestible && numCarried / curSlot.Count <= 0.5f) curPriority = ItemPriority.LowStock;
                                     else curPriority = ItemPriority.Low;
                                 }
                             }
@@ -126,46 +123,43 @@ namespace Combat_Realism
                 return true;
             }
             // Check to see if there is at least one loadout slot specifying currently equipped weapon
-            ThingWithComps equipment = pawn.equipment?.Primary ?? null;
+            ThingWithComps equipment = ((pawn.equipment == null) ? null : pawn.equipment.Primary) ?? null;
             if (equipment != null && !loadout.Slots.Any(slot => slot.Def == equipment.def && slot.Count >= 1))
             {
                 return true;
             }
 
             // Go through each item in the inventory and see if its part of our loadout
-            bool allowDropRaw = Find.TickManager.TicksGame > pawn.mindState.lastInventoryRawFoodUseTick + ticksBeforeDropRaw;
+            bool allowDropRaw = Find.TickManager.TicksGame > pawn.mindState?.lastInventoryRawFoodUseTick + ticksBeforeDropRaw;
             foreach (Thing thing in inventory.container)
             {
-                if(allowDropRaw || !thing.def.IsNutritionSource || thing.def.ingestible.preferability > FoodPreferability.Raw)
+                if(allowDropRaw || !thing.def.IsNutritionGivingIngestible || thing.def.ingestible.preferability > FoodPreferability.RawBad)
                 {
                     LoadoutSlot slot = loadout.Slots.FirstOrDefault(x => x.Def == thing.def);
                     if (slot == null)
                     {
                         return true;
                     }
-                    else
-                    {
-                        int numContained = inventory.container.NumContained(thing.def);
+                    int numContained = inventory.container.NumContained(thing.def);
 
-                        // Add currently equipped gun
-                        if (pawn.equipment != null && pawn.equipment.Primary != null)
+                    // Add currently equipped gun
+                    if (pawn.equipment != null && pawn.equipment.Primary != null)
+                    {
+                        if (pawn.equipment.Primary.def == slot.Def)
                         {
-                            if (pawn.equipment.Primary.def == slot.Def)
-                            {
-                                numContained++;
-                            }
+                            numContained++;
                         }
-                        if (slot.Count < numContained)
-                        {
-                            return true;
-                        }
+                    }
+                    if (slot.Count < numContained)
+                    {
+                        return true;
                     }
                 }
             }
             return false;
         }
 
-        protected override Job TryGiveTerminalJob(Pawn pawn)
+        protected override Job TryGiveJob(Pawn pawn)
         {
             // Get inventory
             CompInventory inventory = pawn.TryGetComp<CompInventory>();
@@ -200,10 +194,7 @@ namespace Combat_Realism
                                 {
                                     return HaulAIUtility.HaulToStorageJob(pawn, droppedThing);
                                 }
-                                else
-                                {
-                                    Log.Error(pawn.ToString() + " tried dropping " + thing.ToString() + " from loadout but resulting thing is null");
-                                }
+                                Log.Error(pawn + " tried dropping " + thing + " from loadout but resulting thing is null");
                             }
                         }
                     }
@@ -220,9 +211,9 @@ namespace Combat_Realism
                 }
 
                 // Find excess items in inventory that are not part of our loadout
-                bool allowDropRaw = Find.TickManager.TicksGame > pawn.mindState.lastInventoryRawFoodUseTick + ticksBeforeDropRaw;
+                bool allowDropRaw = Find.TickManager.TicksGame > pawn.mindState?.lastInventoryRawFoodUseTick + ticksBeforeDropRaw;
                 Thing thingToRemove = inventory.container.FirstOrDefault(t => 
-                    (allowDropRaw || !t.def.IsNutritionSource || t.def.ingestible.preferability > FoodPreferability.Raw) 
+                    (allowDropRaw || !t.def.IsNutritionGivingIngestible || t.def.ingestible.preferability > FoodPreferability.RawBad)
                     && !loadout.Slots.Any(s => s.Def == t.def));
                 if (thingToRemove != null)
                 {
@@ -231,10 +222,7 @@ namespace Combat_Realism
                     {
                         return HaulAIUtility.HaulToStorageJob(pawn, droppedThing);
                     }
-                    else
-                    {
-                        Log.Error(pawn.ToString() + " tried dropping " + thingToRemove.ToString() + " from inventory but resulting thing is null");
-                    }
+                    Log.Error(pawn + " tried dropping " + thingToRemove + " from inventory but resulting thing is null");
                 }
 
                 // Find missing items

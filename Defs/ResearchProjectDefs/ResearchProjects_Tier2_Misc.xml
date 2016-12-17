@@ -5,7 +5,8 @@
     <defName>LargeRockets</defName>
     <label>large rockets</label>
     <description>Allows you to build doomsday rocket launchers and triple rocket launchers, one-shot assault weapons that pack a massive punch.</description>
-    <totalCost>2200</totalCost>
+    <baseCost>2200</baseCost>
+    <techLevel>Industrial</techLevel>
     <prerequisites>
       <li>MicroelectronicsBasics</li>
     </prerequisites>
@@ -19,7 +20,8 @@
     <defName>CR_TurretAI</defName>
     <label>automated turrets</label>
     <description>Learn to construct and program basic auto-turrets.</description>
-    <totalCost>3000</totalCost>
+    <baseCost>3000</baseCost>
+    <techLevel>Industrial</techLevel>
     <prerequisites>
       <li>Machining</li>
       <li>MicroelectronicsBasics</li>

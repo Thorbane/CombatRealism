@@ -3,7 +3,7 @@
   
   <!-- ==================== Arrows ========================== -->
 
-  <AmmoSetDef>
+  <Combat_Realism.AmmoSetDef>
     <defName>AmmoSet_Arrow</defName>
     <label>arrows</label>
 		<ammoTypes>
@@ -11,11 +11,11 @@
 			<li>Ammo_Arrow_Steel</li>
 			<li>Ammo_Arrow_Plasteel</li>
 		</ammoTypes>
-  </AmmoSetDef>
+  </Combat_Realism.AmmoSetDef>
   
   <!-- ==================== Great arrows ========================== -->
 
-  <AmmoSetDef>
+  <Combat_Realism.AmmoSetDef>
     <defName>AmmoSet_GreatArrow</defName>
     <label>great arrows</label>
 		<ammoTypes>
@@ -23,6 +23,6 @@
 			<li>Ammo_GreatArrow_Steel</li>
 			<li>Ammo_GreatArrow_Plasteel</li>
 		</ammoTypes>
-  </AmmoSetDef>
+  </Combat_Realism.AmmoSetDef>
   
 </Defs>

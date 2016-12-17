@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ThingDefs>
 
-
   <ThingDef Name="BaseWeaponNeolithic" Abstract="True">
     <category>Item</category>
     <thingClass>ThingWithComps</thingClass>
@@ -34,6 +33,9 @@
       <li>
         <compClass>CompEquippable</compClass>
       </li>
+      <li>
+        <compClass>CompQuality</compClass>
+      </li>
     </comps>
     <recipeMaker>
       <workSpeedStat>SmithingSpeed</workSpeedStat>
@@ -43,6 +45,7 @@
         <li>FueledSmithy</li>
       </recipeUsers>
       <effectWorking>Smelt</effectWorking>
+      <unfinishedThingDef>UnfinishedWeapon</unfinishedThingDef>
     </recipeMaker>
   </ThingDef>
 
@@ -206,7 +209,7 @@
         <projectileDef>Projectile_GreatArrow_Stone</projectileDef>
         <warmupTicks>80</warmupTicks>
         <range>30</range>
-        <soundCast>BowGreat</soundCast>
+        <soundCast>BowLarge</soundCast>
       </li>
     </verbs>
 	<comps>

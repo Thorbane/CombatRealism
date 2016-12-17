@@ -3,17 +3,17 @@
   
   <!-- ==================== .40 Rimfire ========================== -->
 
-  <AmmoSetDef>
+  <Combat_Realism.AmmoSetDef>
     <defName>AmmoSet_40Rimfire</defName>
     <label>.40 Rimfire</label>
 	<ammoTypes>
 	  <li>Ammo_40Rimfire</li>
 	</ammoTypes>
-  </AmmoSetDef>
+  </Combat_Realism.AmmoSetDef>
   
   <!-- ==================== .32 ACP ========================== -->
 
-  <AmmoSetDef>
+  <Combat_Realism.AmmoSetDef>
     <defName>AmmoSet_32ACP</defName>
     <label>.32 ACP</label>
 	<ammoTypes>
@@ -21,11 +21,11 @@
 	  <!--<li>Ammo_32ACP_AP</li>
 	  <li>Ammo_32ACP_HP</li>-->
 	</ammoTypes>
-  </AmmoSetDef>
+  </Combat_Realism.AmmoSetDef>
   
   <!-- ==================== 7.62x25mm Tokarev ========================== -->
 
-  <AmmoSetDef>
+  <Combat_Realism.AmmoSetDef>
     <defName>AmmoSet_762x25mmTokarev</defName>
     <label>7.62x25mm Tokarev</label>
 	<ammoTypes>
@@ -33,11 +33,11 @@
 	  <li>Ammo_762x25mmTokarev_AP</li>
 	  <li>Ammo_762x25mmTokarev_HP</li>
 	</ammoTypes>
-  </AmmoSetDef>
+  </Combat_Realism.AmmoSetDef>
   
   <!-- ==================== 9x19mm Parabellum ========================== -->
 
-  <AmmoSetDef>
+  <Combat_Realism.AmmoSetDef>
     <defName>AmmoSet_9x19mmPara</defName>
     <label>9x19mm Para</label>
 	<ammoTypes>
@@ -45,11 +45,11 @@
 	  <li>Ammo_9x19mmPara_AP</li>
 	  <li>Ammo_9x19mmPara_HP</li>
 	</ammoTypes>
-  </AmmoSetDef>
+  </Combat_Realism.AmmoSetDef>
   
   <!-- ==================== .45 ACP ========================== -->
 
-  <AmmoSetDef>
+  <Combat_Realism.AmmoSetDef>
     <defName>AmmoSet_45ACP</defName>
     <label>.45 ACP</label>
 	<ammoTypes>
@@ -57,11 +57,11 @@
 	  <li>Ammo_45ACP_AP</li>
 	  <li>Ammo_45ACP_HP</li>
 	</ammoTypes>
-  </AmmoSetDef>
+  </Combat_Realism.AmmoSetDef>
   
   <!-- ==================== .45 Colt/.410 Bore ========================== -->
 
-  <AmmoSetDef>
+  <Combat_Realism.AmmoSetDef>
     <defName>AmmoSet_45Colt</defName>
     <label>.45 Colt/.410 bore</label>
 	<ammoTypes>
@@ -70,6 +70,6 @@
 	  <li>Ammo_45Colt_HP</li>
 	  <li>Ammo_410Bore_Buck</li>
 	</ammoTypes>
-  </AmmoSetDef>
+  </Combat_Realism.AmmoSetDef>
   
 </Defs>

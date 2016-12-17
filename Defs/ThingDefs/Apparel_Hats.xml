@@ -46,7 +46,7 @@
 	  <AimingAccuracy>1.15</AimingAccuracy>
     </equippedStatOffsets>
     <costList>
-      <Components>7</Components>
+      <Component>7</Component>
       <Plasteel>50</Plasteel>
 	  <DevilstrandCloth>20</DevilstrandCloth>
     </costList>
@@ -93,7 +93,7 @@
     <defName>Apparel_KevlarHelmet</defName>
     <label>kevlar helmet</label>
     <description>A lightweight combat helmet.</description>
-    <techLevel>Midworld</techLevel>
+    <techLevel>Industrial</techLevel>
     <recipeMaker>
       <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
     </recipeMaker>
@@ -158,7 +158,7 @@
     <defName>Apparel_MilitaryHelmet</defName>
     <label>military helmet</label>
     <description>Old-looking and heavy, but effective. Protects against low-velocity projectiles, shrapnel, falling debris, and cuts to the head.</description>
-    <techLevel>Midworld</techLevel>
+    <techLevel>Industrial</techLevel>
     <graphicData>
       <texPath>Things/Pawn/Humanlike/Apparel/MilitaryHelmet/MilitaryHelmet</texPath>
       <graphicClass>Graphic_Single</graphicClass>

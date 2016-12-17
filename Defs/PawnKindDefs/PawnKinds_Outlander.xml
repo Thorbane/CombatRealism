@@ -6,7 +6,7 @@
     <label>villager</label>
     <race>Human</race>
     <combatPower>25</combatPower>
-    <baseRecruitDifficulty>60</baseRecruitDifficulty>
+    <baseRecruitDifficulty>0.60</baseRecruitDifficulty>
     <backstoryCategory>Civil</backstoryCategory>
     <defaultFactionType>Outlander</defaultFactionType>
     <itemQuality>Poor</itemQuality>
@@ -40,7 +40,7 @@
       <li>Simple</li>
     </techHediffsTags>
     <techHediffsChance>0.001</techHediffsChance>
-    <invMealCount>3</invMealCount>
+    <invNutrition>1.5</invNutrition>
 	<fixedInventory>
 	  <LoadoutGen_OutlanderAmmoPrimary>1</LoadoutGen_OutlanderAmmoPrimary>
 	  <LoadoutGen_OutlanderSidearmMelee>1</LoadoutGen_OutlanderSidearmMelee>
@@ -68,7 +68,7 @@
     <race>Human</race>
     <combatPower>50</combatPower>
     <defaultFactionType>Outlander</defaultFactionType>
-    <baseRecruitDifficulty>60</baseRecruitDifficulty>
+    <baseRecruitDifficulty>0.60</baseRecruitDifficulty>
     <backstoryCategory>Raider</backstoryCategory>
     <backstoryCryptosleepCommonality>0.1</backstoryCryptosleepCommonality>
     <maxGenerationAge>58</maxGenerationAge>
@@ -99,7 +99,7 @@
       <li>Simple</li>
     </techHediffsTags>
     <techHediffsChance>0.001</techHediffsChance>
-    <invMealCount>3</invMealCount>
+    <invNutrition>1.5</invNutrition>
 	<fixedInventory>
 	  <LoadoutGen_MercAmmoPrimary>1</LoadoutGen_MercAmmoPrimary>
 	  <LoadoutGen_MercSidearmMelee>1</LoadoutGen_MercSidearmMelee>

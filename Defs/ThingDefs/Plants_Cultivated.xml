@@ -3,7 +3,7 @@
 
   <!--=========================== Crops ==============================-->
   
-  <ThingDef Name="PlantBase" Abstract="True">
+  <ThingDef ParentName="PlantBase" Name="CRPlantBase" Abstract="True">
     <category>Plant</category>
     <thingClass>Plant</thingClass>
     <altitudeLayer>LowPlant</altitudeLayer>
@@ -18,24 +18,10 @@
     <graphicData>
       <shaderType>CutoutPlant</shaderType>
     </graphicData>
-    <plant>
-      <harvestDestroys>true</harvestDestroys>
-      <soundHarvesting>Harvest_Standard</soundHarvesting>
-      <soundHarvestFinish>Harvest_Standard_Finish</soundHarvestFinish>
-      <harvestWork>150</harvestWork>
-      <sowWork>150</sowWork>
-      <fertilityMin>0.5</fertilityMin>
-      <fertilityFactorGrowthRate>1.0</fertilityFactorGrowthRate>
-      <topWindExposure>0.1</topWindExposure>
-      <visualSizeRange>
-        <min>0.3</min>
-        <max>1.00</max>
-      </visualSizeRange>
-    </plant>
   </ThingDef>
 
 
-  <ThingDef ParentName="PlantBase">
+  <ThingDef ParentName="CRPlantBase">
     <defName>PlantBlazebulb</defName>
 	<thingClass>Combat_Realism.Plant_Blazebulb</thingClass>
     <label>Blazebulb</label>

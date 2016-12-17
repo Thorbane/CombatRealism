@@ -2,26 +2,6 @@
 <ThingDefinitions>
   
   <ThingDef>
-    <defName>Puddle_Fuel</defName>
-    <label>fuel puddle</label>
-    <thingClass>Combat_Realism.IncendiaryFuel</thingClass>
-    <category>Item</category>
-    <graphicData>
-      <texPath>Things/Item/Special/LiquidFuel</texPath>
-      <graphicClass>Graphic_Single</graphicClass>
-      <shaderType>Transparent</shaderType>
-    </graphicData>
-    <altitudeLayer>LowPlant</altitudeLayer>
-    <useHitPoints>true</useHitPoints>
-    <statBases>
-      <MaxHitPoints>75</MaxHitPoints>
-      <Flammability>5.0</Flammability>
-    </statBases>
-    <tickerType>Normal</tickerType>
-    <description>Burns on the ground.</description>
-  </ThingDef>
-
-  <ThingDef>
     <defName>ArtilleryMarker</defName>
     <label>artillery marker</label>
     <thingClass>Combat_Realism.ArtilleryMarker</thingClass>
@@ -35,6 +15,5 @@
     <altitudeLayer>MetaOverlays</altitudeLayer>
     <useHitPoints>false</useHitPoints>
   </ThingDef>
-
 
 </ThingDefinitions>

@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using RimWorld;
+using UnityEngine;
 using Verse;
 using Verse.AI;
-using UnityEngine;
 
 namespace Combat_Realism
 {
     class JobGiver_RunForCover : ThinkNode_JobGiver
     {
-        private const float maxCoverDist = 10f; //Maximum distance to run for cover to
+        public const float maxCoverDist = 15f; //Maximum distance to run for cover to
 
-        protected override Job TryGiveTerminalJob(Pawn pawn)
+        protected override Job TryGiveJob(Pawn pawn)
         {
             //Calculate cover position
             CompSuppressable comp = pawn.TryGetComp<CompSuppressable>();
@@ -26,7 +23,7 @@ namespace Combat_Realism
             IntVec3 coverPosition;
 
             //Try to find cover position to move up to
-            if (!this.GetCoverPositionFrom(pawn, comp.suppressorLoc, maxCoverDist, out coverPosition))
+            if (!GetCoverPositionFrom(pawn, comp.suppressorLoc, maxCoverDist, out coverPosition))
             {
                 return null;
             }
@@ -39,14 +36,14 @@ namespace Combat_Realism
 
             //Tell pawn to move to position
             Find.PawnDestinationManager.ReserveDestinationFor(pawn, coverPosition);
-            return new Job(DefDatabase<JobDef>.GetNamed("RunForCover", true), coverPosition)
+            return new Job(CR_JobDefOf.RunForCover, coverPosition)
             {
                 locomotionUrgency = LocomotionUrgency.Sprint,
                 playerForced = true
             };
         }
 
-        private bool GetCoverPositionFrom(Pawn pawn, IntVec3 fromPosition, float maxDist, out IntVec3 coverPosition)
+        public static bool GetCoverPositionFrom(Pawn pawn, IntVec3 fromPosition, float maxDist, out IntVec3 coverPosition)
         {
             //First check if we have cover already
             Vector3 coverVec = (fromPosition - pawn.Position).ToVector3().normalized;
@@ -69,7 +66,7 @@ namespace Combat_Realism
                     && cell.Standable() 
                     && !Find.PawnDestinationManager.DestinationIsReserved(cell)
                     && pawn.CanReach(cell, PathEndMode.ClosestTouch, Danger.Deadly, false)
-                    && !cell.FireNearby())
+                    )
                 {
                     coverVec = (fromPosition - cell).ToVector3().normalized;    //The direction in which we want to have cover
                     coverCell = (cell.ToVector3Shifted() + coverVec).ToIntVec3();   //The cell we check for cover

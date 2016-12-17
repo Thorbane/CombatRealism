@@ -4,10 +4,18 @@
 	<!-- ================== RPG-7 Grenade ================== -->
 
 	<ThingDef Name="BaseRPG7Grenade" ParentName="BaseBullet" Abstract="true">
+		<thingClass>Combat_Realism.ProjectileCR_Explosive_RL</thingClass>
+		<graphicData>
+		  <shaderType>TransparentPostLight</shaderType>
+		</graphicData>
 		<projectile>
-			<speed>60</speed>
+		  <speed>65</speed>
+		  <soundHitThickRoof>ArtilleryHitThickRoof</soundHitThickRoof>
+		  <soundImpactAnticipate>MortarRound_PreImpact</soundImpactAnticipate>
+		  <soundAmbient>RocketPropelledLoop_Small</soundAmbient>
+		  <flyOverhead>false</flyOverhead>
 		</projectile>
-	</ThingDef>
+	</ThingDef>	
 
   <ThingDef ParentName="BaseRPG7Grenade">
     <defName>Bullet_RPG7Grenade_HEAT</defName>
@@ -18,15 +26,15 @@
 		</graphicData>
     <projectile>
       <damageDef>Bullet</damageDef>
-      <damageAmountBase>150</damageAmountBase>
-      <armorPenetration>10</armorPenetration>
+      <damageAmountBase>50</damageAmountBase>
+	  <armorPenetration>1.0</armorPenetration>
     </projectile>
     <comps>
       <li Class="Combat_Realism.CompProperties_ExplosiveCR">
-        <explosionDamage>30</explosionDamage>
+        <explosionDamage>35</explosionDamage>
         <explosionDamageDef>Bomb</explosionDamageDef>
-        <explosionRadius>1.0</explosionRadius>
-        <soundExplode>Explosion_Bomb</soundExplode>
+        <explosionRadius>3</explosionRadius>
+        <soundExplode>MortarBomb_Explode</soundExplode>
       </li>
     </comps>
   </ThingDef>
@@ -39,12 +47,13 @@
 			<graphicClass>Graphic_Single</graphicClass>
 		</graphicData>
     <projectile>
+	  <explosionRadius>1.7</explosionRadius>
       <damageDef>Thermobaric</damageDef>
-      <damageAmountBase>200</damageAmountBase>
+      <damageAmountBase>50</damageAmountBase>
     </projectile>
     <comps>
 	  <li Class="Combat_Realism.CompProperties_ExplosiveCR">
-	    <explosionDamage>100</explosionDamage>
+	    <explosionDamage>40</explosionDamage>
 	    <explosionDamageDef>Thermobaric</explosionDamageDef>
 	    <explosionRadius>4.0</explosionRadius>
 	    <damageAdjacentTiles>true</damageAdjacentTiles>
@@ -62,22 +71,21 @@
 		<graphicClass>Graphic_Single</graphicClass>
 	</graphicData>
     <projectile>
-      <explosionRadius>1.5</explosionRadius>
+      <explosionRadius>1.7</explosionRadius>
       <damageDef>Bomb</damageDef>
       <damageAmountBase>50</damageAmountBase>
     </projectile>
     <comps>
       <li Class="Combat_Realism.CompProperties_ExplosiveCR">
-        <fragRange>10</fragRange>
+        <fragRange>9</fragRange>
         <fragments>
-          <Fragment_GrenadeFragSmall>300</Fragment_GrenadeFragSmall>
-          <Fragment_GrenadeFragMedium>180</Fragment_GrenadeFragMedium>
-          <Fragment_GrenadeFragLarge>60</Fragment_GrenadeFragLarge>
+          <Fragment_GrenadeFragSmall>170</Fragment_GrenadeFragSmall>
+          <Fragment_GrenadeFragMedium>80</Fragment_GrenadeFragMedium>
+          <Fragment_GrenadeFragLarge>30</Fragment_GrenadeFragLarge>
         </fragments>
-	    <soundExplode>Explosion_Bomb</soundExplode>
+	    <soundExplode>MortarBomb_Explode</soundExplode>
       </li>
     </comps>
   </ThingDef>
-
 
 </ThingDefs>

@@ -7,9 +7,10 @@
 		<race>Human</race>
     <combatPower>38</combatPower>
     <defaultFactionType>Tribe</defaultFactionType>
-		<baseRecruitDifficulty>90</baseRecruitDifficulty>
+		<baseRecruitDifficulty>0.90</baseRecruitDifficulty>
 		<backstoryCategory>Tribal</backstoryCategory>
-    <invMealCount>3</invMealCount>
+    <invNutrition>1.5</invNutrition>
+    <invFoodDef>Pemmican</invFoodDef>
     <backstoryCryptosleepCommonality>0.01</backstoryCryptosleepCommonality>
     <maxGenerationAge>40</maxGenerationAge>
     <gearHealthRange>
@@ -38,9 +39,10 @@
 		<race>Human</race>
     <combatPower>48</combatPower>
     <defaultFactionType>Tribe</defaultFactionType>
-		<baseRecruitDifficulty>90</baseRecruitDifficulty>
+		<baseRecruitDifficulty>0.90</baseRecruitDifficulty>
 		<backstoryCategory>Tribal</backstoryCategory>
-    <invMealCount>3</invMealCount>
+    <invNutrition>1.5</invNutrition>
+    <invFoodDef>Pemmican</invFoodDef>
     <backstoryCryptosleepCommonality>0.01</backstoryCryptosleepCommonality>
     <maxGenerationAge>40</maxGenerationAge>
     <gearHealthRange>
@@ -91,9 +93,10 @@
 		<race>Human</race>
     <combatPower>70</combatPower>
     <defaultFactionType>Tribe</defaultFactionType>
-		<baseRecruitDifficulty>95</baseRecruitDifficulty>
+		<baseRecruitDifficulty>0.95</baseRecruitDifficulty>
 		<backstoryCategory>Tribal</backstoryCategory>
-    <invMealCount>3</invMealCount>
+    <invNutrition>1.5</invNutrition>
+    <invFoodDef>Pemmican</invFoodDef>
     <itemQuality>Superior</itemQuality>
     <backstoryCryptosleepCommonality>0.01</backstoryCryptosleepCommonality>
     <minGenerationAge>35</minGenerationAge>

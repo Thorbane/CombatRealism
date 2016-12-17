@@ -18,7 +18,7 @@
       <texPath>Things/Building/Linked/Sandbags_Blueprint_Atlas</texPath>
     </blueprintGraphicData>
     <uiIconPath>Things/Building/Linked/Sandbags_MenuIcon</uiIconPath>
-    <altitudeLayer>Waist</altitudeLayer>
+    <AltitudeLayer>Building</AltitudeLayer>
     <pathCost>40</pathCost>
     <passability>PassThroughOnly</passability>
     <castEdgeShadows>true</castEdgeShadows>
@@ -46,7 +46,7 @@
     <staticSunShadowHeight>0.20</staticSunShadowHeight>
     <constructEffect>ConstructDirt</constructEffect>
     <repairEffect>ConstructDirt</repairEffect>
-    <designationHotKey>B</designationHotKey>
+    <designationHotKey>Misc1</designationHotKey>
   </ThingDef>
 
 
@@ -65,7 +65,7 @@
       </damageData>
     </graphicData>
 		<tradeability>Stockable</tradeability>
-    <altitudeLayer>Waist</altitudeLayer>
+    <AltitudeLayer>Building</AltitudeLayer>
     <statBases>
       <MaxHitPoints>100</MaxHitPoints>
       <Flammability>1.0</Flammability>
@@ -98,7 +98,7 @@
     <costStuffCount>75</costStuffCount>
     <costList>
       <Steel>100</Steel>
-      <Components>10</Components>
+      <Component>10</Component>
     </costList>
     <recipeMaker>
       <workSpeedStat>SmithingSpeed</workSpeedStat>
@@ -125,7 +125,7 @@
       <turretBurstCooldownTicks>90</turretBurstCooldownTicks>
       <turretTopgraphicPath>Things/Building/Security/TurretImprovised_Top</turretTopgraphicPath>
     </building>
-    <designationHotKey>U</designationHotKey>
+    <designationHotKey>Misc2</designationHotKey>
     <tradeTags>
       <li>CR_Turret</li>
     </tradeTags>
@@ -146,7 +146,7 @@
         <cornerTL>Damage/Corner</cornerTL>
       </damageData>
     </graphicData>
-    <altitudeLayer>Waist</altitudeLayer>
+    <AltitudeLayer>Building</AltitudeLayer>
     <hasInteractionCell>True</hasInteractionCell>
     <interactionCellOffset>(0,0,-1)</interactionCellOffset>
     <statBases>
@@ -186,7 +186,6 @@
       <li>PlaceWorker_NotUnderRoof</li>
     </placeWorkers>
     <researchPrerequisites><li>Mortars</li></researchPrerequisites>
-    <designationCategory>Security</designationCategory>
   </ThingDef>
 
   <!--=============== Mortar turret ===============-->
@@ -199,7 +198,8 @@
         <li>Artillery_BaseDestroyer</li>
       </buildingTags>
     </building>
-    <designationHotKey>I</designationHotKey>
+    <designationCategory>Security</designationCategory>
+    <designationHotKey>Misc3</designationHotKey>
   </ThingDef>
 
 
@@ -247,7 +247,7 @@
         <rect>(0,0,1,0.15)</rect>
       </damageData>
     </graphicData>
-    <altitudeLayer>Waist</altitudeLayer>
+    <AltitudeLayer>Building</AltitudeLayer>
     <drawerType>RealtimeOnly</drawerType>
     <rotatable>false</rotatable>
     <tickerType>Normal</tickerType>
@@ -266,7 +266,7 @@
     </stuffCategories>
     <costStuffCount>70</costStuffCount>
     <designationCategory>Security</designationCategory>
-    <designationHotKey>L</designationHotKey>
+    <designationHotKey>Misc6</designationHotKey>
     <building>
       <isTrap>true</isTrap>
       <trapDamageCategory>Sharp</trapDamageCategory>
@@ -291,7 +291,7 @@
         <rect>(0.1,0,0.8,0.3)</rect>
       </damageData>
     </graphicData>
-    <altitudeLayer>Waist</altitudeLayer>
+    <AltitudeLayer>Building</AltitudeLayer>
     <drawerType>RealtimeOnly</drawerType>
     <rotatable>false</rotatable>
     <tickerType>Normal</tickerType>
@@ -304,10 +304,10 @@
     <description>An artillery shell connected to a homemade trigger. When someone disturbs the trigger, the shell explodes. The improvised trigger has a random delay that might allow a nimble enemy to escape.</description>
     <costList>
       <ArtilleryShell>1</ArtilleryShell>
-      <Components>1</Components>
+      <Component>1</Component>
     </costList>
     <designationCategory>Security</designationCategory>
-    <designationHotKey>M</designationHotKey>
+    <designationHotKey>Misc7</designationHotKey>
     <building>
       <isTrap>true</isTrap>
     </building>
@@ -338,7 +338,7 @@
         <rect>(0.1,0,0.8,0.3)</rect>
       </damageData>
     </graphicData>
-    <altitudeLayer>Waist</altitudeLayer>
+    <AltitudeLayer>Building</AltitudeLayer>
     <drawerType>RealtimeOnly</drawerType>
     <rotatable>false</rotatable>
     <tickerType>Normal</tickerType>
@@ -350,11 +350,11 @@
     </statBases>
     <description>Explosives mixed into an incendiary paste with a chemical trigger for dispersal. Its chemical trigger is simple and reliable.</description>
     <costList>
-      <ArtilleryShell>1</ArtilleryShell>
-      <Components>1</Components>
+      <Ammo_81mmMortarShell_Incendiary>1</Ammo_81mmMortarShell_Incendiary>
+      <Component>1</Component>
     </costList>
     <designationCategory>Security</designationCategory>
-    <designationHotKey>N</designationHotKey>
+    <designationHotKey>Misc8</designationHotKey>
     <building>
       <isTrap>true</isTrap>
     </building>

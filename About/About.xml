@@ -1,11 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
-	<name>Combat Realism Core</name>
+	<name>Combat Realism</name>
 	<author>NoImageAvailable</author>
 	<url>https://ludeon.com/forums/index.php?topic=9759.0</url>
-	<targetVersion>Alpha 13</targetVersion>
-	<description>Version: 1.6.5
-	
-An extensive overhaul of the game's combat to make it more realistic.
-	</description>
+    <targetVersion>0.15.1284</targetVersion>
+	<description>
+    Version: 1.6.8 update by Skyarkhangel, Killface for A15
+
+    An extensive overhaul of the game's combat to make it more realistic.
+    Require Community Core Library first!
+
+    Font used for swear icons: Potty Mouth BB by Nate Piekos · Blambot · http://www.blambot.com/font_pottymouth.shtml
+  </description>
 </ModMetaData>

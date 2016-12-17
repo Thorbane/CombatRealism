@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using RimWorld;
-using Verse;
-using Verse.AI;
 using UnityEngine;
+using Verse.AI;
 
 namespace Combat_Realism
 {
@@ -28,10 +26,18 @@ namespace Combat_Realism
 
         protected override IEnumerable<Toil> MakeNewToils()
         {
-            this.FailOnDestroyedNullOrForbidden(TargetIndex.A);
-            this.FailOnDestroyedNullOrForbidden(TargetIndex.B);
-
-
+            if (pawn.Faction != Faction.OfPlayer)
+            {
+                TargetThingB.SetForbidden(false, false);
+                this.FailOnDestroyedOrNull(TargetIndex.A);
+                this.FailOnDestroyedOrNull(TargetIndex.B);
+            }
+            else
+            {
+                this.FailOnDestroyedNullOrForbidden(TargetIndex.A);
+                this.FailOnDestroyedNullOrForbidden(TargetIndex.B);
+            }
+            
             // Haul ammo
             yield return Toils_Reserve.Reserve(TargetIndex.A, 1);
             yield return Toils_Reserve.Reserve(TargetIndex.B, 1);
@@ -41,27 +47,27 @@ namespace Combat_Realism
             yield return Toils_Haul.PlaceHauledThingInCell(TargetIndex.A, null, false);
 
             // Wait in place
-            var waitToil = new Toil();
-            waitToil.initAction = new Action(delegate
+            Toil waitToil = new Toil();
+            waitToil.initAction = delegate
             {
                 waitToil.actor.pather.StopDead();
                 compReloader.TryStartReload();
-            });
+            };
             waitToil.defaultCompleteMode = ToilCompleteMode.Delay;
-            waitToil.defaultDuration = Mathf.CeilToInt(compReloader.Props.reloadTicks / pawn.GetStatValue(StatDef.Named("ReloadSpeed")));
+            waitToil.defaultDuration = Mathf.CeilToInt(compReloader.Props.reloadTicks / pawn.GetStatValue(CR_StatDefOf.ReloadSpeed));
             yield return waitToil.WithProgressBarToilDelay(TargetIndex.A);
 
             //Actual reloader
-            var reloadToil = new Toil();
+            Toil reloadToil = new Toil();
             reloadToil.defaultCompleteMode = ToilCompleteMode.Instant;
-            reloadToil.initAction = new Action(delegate
+            reloadToil.initAction = delegate
             {
                 Building_TurretGunCR turret = TargetThingA as Building_TurretGunCR;
                 if (compReloader != null && turret.compAmmo != null)
                 {
                     compReloader.LoadAmmo(TargetThingB);
                 }
-            });
+            };
             reloadToil.EndOnDespawnedOrNull(TargetIndex.B);
             yield return reloadToil;
         }

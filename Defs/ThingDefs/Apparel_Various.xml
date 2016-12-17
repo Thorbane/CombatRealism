@@ -141,7 +141,7 @@
     <defName>Apparel_VestPlate</defName>
     <label>armor vest</label>
     <description>A vest with armor plates inserted on the chest and back. Protects against gunfire.</description>
-    <techLevel>Midworld</techLevel>
+    <techLevel>Industrial</techLevel>
     <graphicData>
       <texPath>Things/Pawn/Humanlike/Apparel/VestPlate/VestPlate</texPath>
       <graphicClass>Graphic_Single</graphicClass>
@@ -186,7 +186,7 @@
     <defName>Apparel_CompositeVest</defName>
     <label>composite vest</label>
     <description>A vest with armor plates inserted on the chest and back. Composite plating offers superior protection against gunfire compared to regular vests.</description>
-    <techLevel>Midworld</techLevel>
+    <techLevel>Industrial</techLevel>
     <recipeMaker>
       <unfinishedThingDef>UnfinishedTechArmor</unfinishedThingDef>
     </recipeMaker>
@@ -285,7 +285,7 @@
       <li>Apparel</li>
     </thingCategories>
     <costList>
-      <Components>18</Components>
+      <Component>18</Component>
       <Plasteel>135</Plasteel>
     </costList>
     <apparel>

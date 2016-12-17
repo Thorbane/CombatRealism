@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using CommunityCoreLibrary;
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -11,10 +12,11 @@ namespace Combat_Realism.Detours
 {
     internal static class Detours_WorkGiver_InteractAnimal
     {
+        [DetourClassMethod(typeof(WorkGiver_InteractAnimal), "TakeFoodForAnimalInteractJob", InjectionSequence.DLLLoad, InjectionTiming.Priority_23)]
         internal static Job TakeFoodForAnimalInteractJob(this WorkGiver_InteractAnimal _this, Pawn pawn, Pawn tamee)
         {
             float reqNutrition = JobDriver_InteractAnimal.RequiredNutritionPerFeed(tamee) * 2f * 4f;
-            Thing thing = FoodUtility.BestFoodSpawnedFor(pawn, tamee, false, FoodPreferability.Raw, false, false);
+            Thing thing = FoodUtility.BestFoodSourceOnMap(pawn, tamee, false, FoodPreferability.RawTasty, false, false, false, false, false, false);
             if (thing == null)
             {
                 return null;
@@ -26,7 +28,7 @@ namespace Combat_Realism.Detours
             if (inventory != null)
             {
                 int maxCount;
-                if(inventory.CanFitInInventory(thing, out maxCount))
+                if (inventory.CanFitInInventory(thing, out maxCount))
                 {
                     numToCarry = Mathf.Min(numToCarry, maxCount);
                 }

@@ -22,7 +22,7 @@
     <altitudeLayer>Item</altitudeLayer>
     <alwaysHaulable>True</alwaysHaulable>
     <tickerType>Never</tickerType>
-    <techLevel>Midworld</techLevel>
+    <techLevel>Industrial</techLevel>
     <thingCategories>
       <li>WeaponsRanged</li>
     </thingCategories>
@@ -98,7 +98,7 @@
     </statBases>
     <costList>
       <Steel>30</Steel>
-      <Components>2</Components>
+      <Component>2</Component>
     </costList>
     <weaponTags>
       <li>CR_Sidearm</li>
@@ -150,7 +150,7 @@
     </statBases>
     <costList>
       <Steel>90</Steel>
-      <Components>3</Components>
+      <Component>3</Component>
     </costList>
     <verbs>
       <li Class="Combat_Realism.VerbPropertiesCR">
@@ -202,7 +202,7 @@
     </statBases>
     <costList>
       <Steel>90</Steel>
-      <Components>3</Components>
+      <Component>3</Component>
     </costList>
     <verbs>
       <li Class="Combat_Realism.VerbPropertiesCR">
@@ -252,7 +252,7 @@
     </statBases>
     <costList>
       <Steel>100</Steel>
-      <Components>4</Components>
+      <Component>4</Component>
     </costList>
     <verbs>
       <li Class="Combat_Realism.VerbPropertiesCR">
@@ -307,7 +307,7 @@
     </statBases>
     <costList>
       <Steel>100</Steel>
-      <Components>6</Components>
+      <Component>6</Component>
     </costList>
     <verbs>
       <li Class="Combat_Realism.VerbPropertiesCR">
@@ -340,11 +340,11 @@
   <!-- ============================================== -->
 
   <ThingDef ParentName="BaseHumanMakeableGun">
-    <defName>Gun_PDW</defName>
-    <label>PDW</label>
-    <description>A personal defense weapon is a micro-submachine gun. Short range, low power, high rate of fire. Very quick to aim and fire.</description>
+    <defName>Gun_MachinePistol</defName>
+    <label>Machine pistol</label>
+    <description>A micro-submachine gun. Short range, low power, high rate of fire. Very quick to aim and fire.</description>
     <graphicData>
-      <texPath>Things/Item/Equipment/WeaponRanged/PDW</texPath>
+      <texPath>Things/Item/Equipment/WeaponRanged/MachinePistol</texPath>
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <soundInteract>InteractSMG</soundInteract>
@@ -360,7 +360,7 @@
     </statBases>
     <costList>
       <Steel>90</Steel>
-      <Components>3</Components>
+      <Component>3</Component>
     </costList>
     <verbs>
       <li Class="Combat_Realism.VerbPropertiesCR">
@@ -373,7 +373,7 @@
         <range>20</range>
         <burstShotCount>6</burstShotCount>
         <ticksBetweenBurstShots>6</ticksBetweenBurstShots>
-        <soundCast>ShotPDW</soundCast>
+        <soundCast>ShotMachinePistol</soundCast>
         <soundCastTail>GunTail_Light</soundCastTail>
         <muzzleFlashScale>9</muzzleFlashScale>
       </li>
@@ -419,7 +419,7 @@
     </statBases>
     <costList>
       <Steel>130</Steel>
-      <Components>4</Components>
+      <Component>4</Component>
     </costList>
     <verbs>
       <li Class="Combat_Realism.VerbPropertiesCR">
@@ -477,7 +477,7 @@
     </statBases>
     <costList>
       <Steel>140</Steel>
-      <Components>4</Components>
+      <Component>4</Component>
     </costList>
     <verbs>
       <li Class="Combat_Realism.VerbPropertiesCR">
@@ -534,7 +534,7 @@
     </statBases>
     <costList>
       <Steel>150</Steel>
-      <Components>4</Components>
+      <Component>4</Component>
     </costList>
     <weaponTags>
       <li>CR_MachineGun</li>
@@ -600,7 +600,7 @@
     <costList>
       <Steel>120</Steel>
       <Plasteel>30</Plasteel>
-      <Components>6</Components>
+      <Component>6</Component>
     </costList>
     <techLevel>Spacer</techLevel>
     <weaponTags>
@@ -798,7 +798,7 @@
     </recipeMaker>
     <costList>
       <Steel>170</Steel>
-      <Components>15</Components>
+      <Component>15</Component>
       <FSX>5</FSX>
     </costList>
     <techLevel>Spacer</techLevel>
@@ -876,7 +876,7 @@
     </recipeMaker>
     <costList>
       <Steel>120</Steel>
-      <Components>8</Components>
+      <Component>8</Component>
 	  <FSX>3</FSX>
     </costList>
     <techLevel>Spacer</techLevel>

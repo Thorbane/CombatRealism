@@ -13,6 +13,8 @@ namespace Combat_Realism
         /// <summary>
         /// Initializes availableDefs and adds all available ammo types of the currently equipped weapon 
         /// </summary>
+        /// 
+
         protected override void InitAvailableDefs()
         {
             Pawn pawn = compInvInt.parent as Pawn;
@@ -38,11 +40,15 @@ namespace Combat_Realism
             CompAmmoUser compAmmo = eq.TryGetComp<CompAmmoUser>();
             if (compAmmo != null && !compAmmo.Props.ammoSet.ammoTypes.NullOrEmpty())
             {
-                foreach (ThingDef ammo in compAmmo.Props.ammoSet.ammoTypes)
+
+                List<ThingDef> listammo = (from ThingDef g in compAmmo.Props.ammoSet.ammoTypes
+                                        select g).ToList<ThingDef>();
+                ThingDef randomammo = GenCollection.RandomElement<ThingDef>(listammo);
+                if (randomammo.canBeSpawningInventory)
                 {
-                    if (ammo.canBeSpawningInventory)
-                        availableDefs.Add(ammo);
+                    availableDefs.Add(randomammo);
                 }
+                else return;
             }
         }
 

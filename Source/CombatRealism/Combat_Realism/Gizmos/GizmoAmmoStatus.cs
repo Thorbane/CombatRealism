@@ -8,6 +8,7 @@ using UnityEngine;
 
 namespace Combat_Realism
 {
+    [StaticConstructorOnStartup]
     public class GizmoAmmoStatus : Command
     {
         private static bool initialized;
@@ -16,7 +17,7 @@ namespace Combat_Realism
 
         private static Texture2D FullTex;
         private static Texture2D EmptyTex;
-        private static Texture2D BGTex;
+        private static new Texture2D BGTex;
 
         public override float Width
         {
@@ -31,14 +32,14 @@ namespace Combat_Realism
             if (!initialized)
                 InitializeTextures();
 
-            var overRect = new Rect(topLeft.x, topLeft.y, Width, Height);
+            Rect overRect = new Rect(topLeft.x, topLeft.y, Width, Height);
             Widgets.DrawBox(overRect);
             GUI.DrawTexture(overRect, BGTex);
 
-            var inRect = overRect.ContractedBy(6);
+            Rect inRect = overRect.ContractedBy(6);
 
             // Ammo type
-            var textRect = inRect;
+            Rect textRect = inRect;
             textRect.height = overRect.height / 2;
             Text.Font = GameFont.Tiny;
             Widgets.Label(textRect, compAmmo.currentAmmo == null ? compAmmo.parent.def.LabelCap : compAmmo.currentAmmo.ammoClass.LabelCap);
@@ -46,9 +47,9 @@ namespace Combat_Realism
             // Bar
             if (compAmmo.hasMagazine)
             {
-                var barRect = inRect;
+                Rect barRect = inRect;
                 barRect.yMin = overRect.y + overRect.height / 2f;
-                var ePct = (float)compAmmo.curMagCount / compAmmo.Props.magazineSize;
+                float ePct = (float)compAmmo.curMagCount / compAmmo.Props.magazineSize;
                 Widgets.FillableBar(barRect, ePct);
                 Text.Font = GameFont.Small;
                 Text.Anchor = TextAnchor.MiddleCenter;

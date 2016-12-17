@@ -29,7 +29,7 @@
       <li>
         <filter>
           <thingDefs>
-            <li>Components</li>
+            <li>Component</li>
           </thingDefs>
         </filter>
         <count>3</count>
@@ -39,7 +39,7 @@
       <thingDefs>
         <li>Steel</li>
         <li>FSX</li>
-        <li>Components</li>
+        <li>Component</li>
       </thingDefs>
     </fixedIngredientFilter>
     <products>
@@ -73,7 +73,7 @@
       <li>
         <filter>
           <thingDefs>
-            <li>Components</li>
+            <li>Component</li>
           </thingDefs>
         </filter>
         <count>3</count>
@@ -83,7 +83,7 @@
       <thingDefs>
         <li>Steel</li>
         <li>FSX</li>
-        <li>Components</li>
+        <li>Component</li>
       </thingDefs>
     </fixedIngredientFilter>
     <products>
@@ -117,7 +117,7 @@
       <li>
         <filter>
           <thingDefs>
-            <li>Components</li>
+            <li>Component</li>
           </thingDefs>
         </filter>
         <count>3</count>
@@ -127,7 +127,7 @@
       <thingDefs>
         <li>Steel</li>
         <li>FSX</li>
-        <li>Components</li>
+        <li>Component</li>
       </thingDefs>
     </fixedIngredientFilter>
     <products>

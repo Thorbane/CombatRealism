@@ -13,7 +13,7 @@ namespace Combat_Realism
         public override void DrawWornExtras()
         {
             if (wearer == null || !wearer.Spawned) return;
-            Vector3 drawVec = this.wearer.Drawer.DrawPos;
+            Vector3 drawVec = wearer.Drawer.DrawPos;
 
             // Check if wearer is in a bed
             Building_Bed bed = wearer.CurrentBed();
@@ -29,7 +29,7 @@ namespace Combat_Realism
             Vector3 s = new Vector3(1.5f, 1.5f, 1.5f);
             
             // Get the graphic path
-            string path = def.graphicData.texPath + "_" + wearer?.story.BodyType.ToString();
+            string path = def.graphicData.texPath + "_" + ((wearer == null) ? null : wearer.story.BodyType.ToString());
             Graphic graphic = GraphicDatabase.Get<Graphic_Multi>(path, ShaderDatabase.Cutout, def.graphicData.drawSize, DrawColor);
             ApparelGraphicRecord apparelGraphic = new ApparelGraphicRecord(graphic, this);
 
@@ -47,9 +47,9 @@ namespace Combat_Realism
                 }
                 else if (wearer.Downed || wearer.Dead)
                 {
-                    float? newAngle = wearer.Drawer?.renderer?.wiggler?.downedAngle;
+                    float? newAngle = (((((wearer.Drawer == null) ? null : wearer.Drawer.renderer) == null) ? null : wearer.Drawer.renderer.wiggler) == null) ? (float?)null : wearer.Drawer.renderer.wiggler.downedAngle;
                     if (newAngle != null)
-                        angle = (float)newAngle;
+                        angle = newAngle.Value;
                 }
                 else
                 {

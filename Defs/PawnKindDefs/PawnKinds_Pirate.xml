@@ -9,7 +9,7 @@
     <race>Human</race>
     <combatPower>25</combatPower>
     <defaultFactionType>Pirate</defaultFactionType>
-    <baseRecruitDifficulty>50</baseRecruitDifficulty>
+    <baseRecruitDifficulty>0.50</baseRecruitDifficulty>
     <backstoryCategory>Raider</backstoryCategory>
     <backstoryCryptosleepCommonality>0.1</backstoryCryptosleepCommonality>
     <gearHealthRange>
@@ -55,13 +55,13 @@
     <race>Human</race>
     <combatPower>38</combatPower>
     <defaultFactionType>Pirate</defaultFactionType>
-    <baseRecruitDifficulty>60</baseRecruitDifficulty>
+    <baseRecruitDifficulty>0.60</baseRecruitDifficulty>
     <backstoryCategory>Raider</backstoryCategory>
     <gearHealthRange>
       <min>0.2</min>
       <max>0.9</max>
     </gearHealthRange>
-    <invMealCount>3</invMealCount>
+    <invNutrition>1.5</invNutrition>
     <itemQuality>Poor</itemQuality>
     <backstoryCryptosleepCommonality>0.1</backstoryCryptosleepCommonality>
     <apparelMoney>
@@ -100,9 +100,9 @@
     <race>Human</race>
     <combatPower>36</combatPower>
     <defaultFactionType>Pirate</defaultFactionType>
-    <baseRecruitDifficulty>60</baseRecruitDifficulty>
+    <baseRecruitDifficulty>0.60</baseRecruitDifficulty>
     <backstoryCategory>Raider</backstoryCategory>
-    <invMealCount>3</invMealCount>
+    <invNutrition>1.5</invNutrition>
     <itemQuality>Poor</itemQuality>
     <backstoryCryptosleepCommonality>0.2</backstoryCryptosleepCommonality>
     <maxGenerationAge>48</maxGenerationAge>
@@ -148,9 +148,9 @@
     <race>Human</race>
     <combatPower>56</combatPower>
     <defaultFactionType>Pirate</defaultFactionType>
-    <baseRecruitDifficulty>70</baseRecruitDifficulty>
+    <baseRecruitDifficulty>0.70</baseRecruitDifficulty>
     <backstoryCategory>Raider</backstoryCategory>
-    <invMealCount>3</invMealCount>
+    <invNutrition>1.5</invNutrition>
     <backstoryCryptosleepCommonality>0.2</backstoryCryptosleepCommonality>
     <maxGenerationAge>50</maxGenerationAge>
     <factionLeader>true</factionLeader>

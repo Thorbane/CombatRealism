@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using RimWorld;
+using UnityEngine;
 using Verse;
 using Verse.AI;
-using UnityEngine;
 
 namespace Combat_Realism
 {
@@ -27,34 +27,36 @@ namespace Combat_Realism
             return comp != null && comp.useAmmo && !comp.hasAmmo;
         }
 
-        protected override IEnumerable< Toil > MakeNewToils()
+        protected override IEnumerable<Toil> MakeNewToils()
         {
             if (compReloader == null)
             {
-                Log.Error(pawn.ToString() + " tried to do reload job without compReloader");
+                Log.Error(pawn + " tried to do reload job without compReloader");
                 yield return null;
             }
 
-            this.FailOnDespawnedOrNull( TargetIndex.A );
+            this.FailOnDespawnedOrNull(TargetIndex.A);
             this.FailOnMentalState(TargetIndex.A);
             this.FailOn(HasNoGunOrAmmo);
-            
+
             //Toil of do-nothing		
-            var waitToil = new Toil();
+            Toil waitToil = new Toil();
             waitToil.initAction = () => waitToil.actor.pather.StopDead();
             waitToil.defaultCompleteMode = ToilCompleteMode.Delay;
-            waitToil.defaultDuration = Mathf.CeilToInt(compReloader.Props.reloadTicks / pawn.GetStatValue(StatDef.Named("ReloadSpeed")));
+            waitToil.defaultDuration = Mathf.CeilToInt(compReloader.Props.reloadTicks / pawn.GetStatValue(CR_StatDefOf.ReloadSpeed));
             yield return waitToil.WithProgressBarToilDelay(TargetIndex.A);
 
             //Actual reloader
-            var reloadToil = new Toil();
-            reloadToil.AddFinishAction( () => compReloader.LoadAmmo() );
+            Toil reloadToil = new Toil();
+            reloadToil.AddFinishAction(() => compReloader.LoadAmmo());
             yield return reloadToil;
 
             //Continue previous job if possible
-            var continueToil = new Toil();
-            continueToil.initAction = () => compReloader.TryContinuePreviousJob();
-            continueToil.defaultCompleteMode = ToilCompleteMode.Instant;
+            Toil continueToil = new Toil
+            {
+                initAction = () => compReloader.TryContinuePreviousJob(),
+                defaultCompleteMode = ToilCompleteMode.Instant
+            };
             yield return continueToil;
         }
     }

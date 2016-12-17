@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Combat_Realism.Combat_Realism.DefOfs;
 using RimWorld;
 using Verse;
 using UnityEngine;
@@ -11,12 +12,11 @@ namespace Combat_Realism
     class Plant_Blazebulb : Plant
     {
         private const int ignitionTemp = 21;                    // Temperature (in Celsius) above which the plant will start catching fire
-        private const string fuelDefName = "Puddle_Fuel";       // Name of the def to use for fuel puddles spawned when damaged
 
         public override void TickLong()
         {
             base.TickLong();
-            float temperature = base.Position.GetTemperature();
+            float temperature = Position.GetTemperature();
             if (temperature > ignitionTemp)
             {
                 float ignitionChance = 0.005f * Mathf.Pow((temperature - ignitionTemp), 2);
@@ -34,7 +34,7 @@ namespace Combat_Realism
             if(dinfo.Def != DamageDefOf.Rotting)
             {
                 // Find existing fuel puddle or spawn one if needed
-                Thing fuel = Position.GetThingList().FirstOrDefault(x => x.def == ThingDef.Named(fuelDefName));
+                Thing fuel = Position.GetThingList().FirstOrDefault(x => x.def == CR_ThingDefOf.Napalm_Fuel);
                 int fuelHPFromDamage = Mathf.CeilToInt(fuel.MaxHitPoints * Mathf.Clamp01(totalDamageDealt / MaxHitPoints));
                 if (fuel != null)
                 {
@@ -42,7 +42,7 @@ namespace Combat_Realism
                 }
                 else
                 {
-                    fuel = ThingMaker.MakeThing(ThingDef.Named(fuelDefName));
+                    fuel = ThingMaker.MakeThing(CR_ThingDefOf.Napalm_Fuel);
                     GenSpawn.Spawn(fuel, Position);
                     fuel.HitPoints = fuelHPFromDamage;
                 }

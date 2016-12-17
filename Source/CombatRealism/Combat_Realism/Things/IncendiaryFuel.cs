@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Combat_Realism
 {
-    public class IncendiaryFuel : Thing
+    public class IncendiaryFuel : Filth
     {
         private const float maxFireSize = 1.75f;
 

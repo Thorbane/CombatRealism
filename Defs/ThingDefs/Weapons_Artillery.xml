@@ -12,7 +12,7 @@
       <graphicClass>Graphic_Single</graphicClass>
     </graphicData>
     <tickerType>Never</tickerType>
-    <techLevel>Midworld</techLevel>
+    <techLevel>Industrial</techLevel>
     <soundInteract>ArtilleryShellLoaded</soundInteract>
     <comps>
       <li>
@@ -67,6 +67,9 @@
         <soundCast>Mortar_LaunchA</soundCast>
         <muzzleFlashScale>16</muzzleFlashScale>
         <indirectFirePenalty>0.2</indirectFirePenalty>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
       </li>
     </verbs>
   </ThingDef>
@@ -105,6 +108,9 @@
         <soundCast>Mortar_LaunchA</soundCast>
         <muzzleFlashScale>16</muzzleFlashScale>
         <indirectFirePenalty>0.2</indirectFirePenalty>
+        <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
       </li>
     </verbs>
   </ThingDef>
@@ -143,6 +149,9 @@
         <soundCast>Mortar_LaunchA</soundCast>
         <muzzleFlashScale>16</muzzleFlashScale>
         <indirectFirePenalty>0.2</indirectFirePenalty>
+	    <targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
       </li>
     </verbs>
   </ThingDef>
@@ -178,6 +187,9 @@
         <burstShotCount>1</burstShotCount>
         <soundCast>Mortar_LaunchA</soundCast>
         <muzzleFlashScale>16</muzzleFlashScale>
+		<targetParams>
+          <canTargetLocations>true</canTargetLocations>
+        </targetParams>
       </li>
     </verbs>
   </ThingDef>

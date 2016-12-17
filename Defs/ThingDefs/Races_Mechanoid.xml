@@ -37,6 +37,7 @@
     <soundImpactDefault>BulletImpactMetal</soundImpactDefault>
     <statBases>
       <PsychicSensitivity>0</PsychicSensitivity>
+      <ToxicSensitivity>0</ToxicSensitivity>
       <Flammability>0</Flammability>
       <ComfyTemperatureMin>-100</ComfyTemperatureMin>
       <ComfyTemperatureMax>250</ComfyTemperatureMax>
@@ -87,7 +88,6 @@
           <soundWounded>Pawn_Mech_Centipede_Wounded</soundWounded>
           <soundDeath>Pawn_Mech_Centipede_Death</soundDeath>
           <soundCall>Pawn_Mech_Centipede_Call</soundCall>
-          <soundAngry>Pawn_Mech_Centipede_Angry</soundAngry>
         </li>
       </lifeStageAges>
       <soundCallIntervalRange>
@@ -104,7 +104,7 @@
     <butcherProducts>
       <Steel>80</Steel>
       <Plasteel>50</Plasteel>
-      <Components>2</Components>
+      <Component>2</Component>
     </butcherProducts>
   </ThingDef>
 
@@ -152,7 +152,6 @@
           <soundWounded>Pawn_Mech_Scyther_Wounded</soundWounded>
           <soundDeath>Pawn_Mech_Scyther_Death</soundDeath>
           <soundCall>Pawn_Mech_Scyther_Call</soundCall>
-          <soundAngry>Pawn_Mech_Scyther_Angry</soundAngry>
         </li>
       </lifeStageAges>
       <soundCallIntervalRange>
@@ -170,7 +169,7 @@
     <butcherProducts>
       <Steel>40</Steel>
       <Plasteel>25</Plasteel>
-      <Components>1</Components>
+      <Component>1</Component>
     </butcherProducts>
   </ThingDef>
 

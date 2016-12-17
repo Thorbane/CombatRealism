@@ -8,9 +8,9 @@
     <race>Human</race>
     <combatPower>80</combatPower>
     <defaultFactionType>Pirate</defaultFactionType>
-    <baseRecruitDifficulty>80</baseRecruitDifficulty>
+    <baseRecruitDifficulty>0.80</baseRecruitDifficulty>
     <backstoryCategory>Raider</backstoryCategory>
-    <invMealCount>3</invMealCount>
+    <invNutrition>1.5</invNutrition>
     <itemQuality>Normal</itemQuality>
     <backstoryCryptosleepCommonality>0.25</backstoryCryptosleepCommonality>
     <maxGenerationAge>58</maxGenerationAge>
@@ -55,9 +55,9 @@
     <race>Human</race>
     <combatPower>90</combatPower>
     <defaultFactionType>Pirate</defaultFactionType>
-    <baseRecruitDifficulty>70</baseRecruitDifficulty>
+    <baseRecruitDifficulty>0.70</baseRecruitDifficulty>
     <backstoryCategory>Raider</backstoryCategory>
-    <invMealCount>3</invMealCount>
+    <invNutrition>1.5</invNutrition>
     <itemQuality>Normal</itemQuality>
     <backstoryCryptosleepCommonality>0.25</backstoryCryptosleepCommonality>
     <maxGenerationAge>58</maxGenerationAge>
@@ -105,9 +105,9 @@
     <combatPower>135</combatPower>
     <race>Human</race>
     <defaultFactionType>Pirate</defaultFactionType>
-    <baseRecruitDifficulty>80</baseRecruitDifficulty>
+    <baseRecruitDifficulty>0.80</baseRecruitDifficulty>
     <backstoryCategory>Raider</backstoryCategory>
-    <invMealCount>3</invMealCount>
+    <invNutrition>1.5</invNutrition>
     <backstoryCryptosleepCommonality>0.25</backstoryCryptosleepCommonality>
     <maxGenerationAge>50</maxGenerationAge>
     <gearHealthRange>
@@ -155,9 +155,9 @@
       <li>GunHeavy</li>
     </weaponTags>
     <defaultFactionType>Pirate</defaultFactionType>
-    <baseRecruitDifficulty>80</baseRecruitDifficulty>
+    <baseRecruitDifficulty>0.80</baseRecruitDifficulty>
     <backstoryCategory>Raider</backstoryCategory>
-    <invMealCount>3</invMealCount>
+    <invNutrition>1.5</invNutrition>
     <backstoryCryptosleepCommonality>0.25</backstoryCryptosleepCommonality>
     <maxGenerationAge>90</maxGenerationAge>
     <gearHealthRange>
@@ -198,7 +198,7 @@
   <PawnKindDef Abstract="True" Name="EliteBase" >
     <race>Human</race>
     <defaultFactionType>Pirate</defaultFactionType>
-    <baseRecruitDifficulty>70</baseRecruitDifficulty>
+    <baseRecruitDifficulty>0.70</baseRecruitDifficulty>
     <backstoryCategory>Raider</backstoryCategory>
     <itemQuality>Normal</itemQuality>
     <backstoryCryptosleepCommonality>0.25</backstoryCryptosleepCommonality>

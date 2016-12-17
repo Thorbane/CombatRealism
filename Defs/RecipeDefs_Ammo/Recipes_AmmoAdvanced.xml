@@ -139,7 +139,7 @@
       <li>
         <filter>
           <thingDefs>
-            <li>Components</li>
+            <li>Component</li>
           </thingDefs>
         </filter>
         <count>2</count>
@@ -148,7 +148,7 @@
     <fixedIngredientFilter>
       <thingDefs>
         <li>Plasteel</li>
-        <li>Components</li>
+        <li>Component</li>
       </thingDefs>
     </fixedIngredientFilter>
     <products>
@@ -173,7 +173,7 @@
       <li>
         <filter>
           <thingDefs>
-            <li>Components</li>
+            <li>Component</li>
           </thingDefs>
         </filter>
         <count>2</count>
@@ -182,7 +182,7 @@
     <fixedIngredientFilter>
       <thingDefs>
         <li>Plasteel</li>
-        <li>Components</li>
+        <li>Component</li>
       </thingDefs>
     </fixedIngredientFilter>
     <products>
@@ -207,7 +207,7 @@
       <li>
         <filter>
           <thingDefs>
-            <li>Components</li>
+            <li>Component</li>
           </thingDefs>
         </filter>
         <count>2</count>
@@ -216,7 +216,7 @@
     <fixedIngredientFilter>
       <thingDefs>
         <li>Plasteel</li>
-        <li>Components</li>
+        <li>Component</li>
       </thingDefs>
     </fixedIngredientFilter>
     <products>

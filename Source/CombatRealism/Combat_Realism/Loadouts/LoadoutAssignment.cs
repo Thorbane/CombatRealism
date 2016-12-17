@@ -20,7 +20,7 @@ namespace Combat_Realism
         {
             get
             {
-                return pawn != null && loadout != null;
+                return ((pawn != null) && (loadout != null));
             }
         }
 

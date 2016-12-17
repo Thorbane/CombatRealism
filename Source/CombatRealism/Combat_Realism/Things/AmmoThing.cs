@@ -10,7 +10,7 @@ namespace Combat_Realism
 {
     public class AmmoThing : ThingWithComps
     {
-        AmmoDef ammoDef => def as AmmoDef;
+        AmmoDef ammoDef { get { return def as AmmoDef; } }
 
         public override string GetDescription()
         {

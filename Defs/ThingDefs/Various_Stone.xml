@@ -18,6 +18,7 @@
     </statBases>
     <selectable>true</selectable>
     <pathCost>55</pathCost>
+    <pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
     <drawerType>MapMeshOnly</drawerType>
     <randomizeRotationOnSpawn>true</randomizeRotationOnSpawn>
     <designateHaulable>true</designateHaulable>

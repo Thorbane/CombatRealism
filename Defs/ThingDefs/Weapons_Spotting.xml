@@ -36,7 +36,7 @@
     </statBases>
     <costList>
       <Steel>100</Steel>
-      <Components>4</Components>
+      <Component>4</Component>
     </costList>
     <verbs>
       <li Class="Combat_Realism.VerbPropertiesCR">
