@@ -151,6 +151,11 @@ namespace Combat_Realism
             return label;
         }
 
+        internal static Loadout GetLoadoutById(int id)
+        {
+            return Loadouts.Find(x => x.uniqueID == id);
+        }
+
         #endregion Methods
     }
 }

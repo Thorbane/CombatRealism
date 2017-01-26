@@ -150,6 +150,11 @@ namespace Combat_Realism
             return loadout;
         }
 
+        public static int GetLoadoutId(this Pawn pawn)
+        {
+            return GetLoadout(pawn).uniqueID;
+        }
+
         public static string GetWeightAndBulkTip(this Loadout loadout)
         {
             return loadout.GetWeightTip() + "\n\n" + loadout.GetBulkTip();
@@ -216,6 +221,15 @@ namespace Combat_Realism
                 LoadoutManager.AssignedLoadouts[pawn] = loadout;
             else
                 LoadoutManager.AssignedLoadouts.Add(pawn, loadout);
+        }
+
+        public static void SetLoadoutById(this Pawn pawn, int loadoutId)
+        {
+            Loadout loadout = LoadoutManager.GetLoadoutById(loadoutId);
+            if (loadout == null)
+                throw new ArgumentNullException("loadout");
+
+            SetLoadout(pawn, loadout);
         }
 
         public static void UpdateColonistCapacities()
