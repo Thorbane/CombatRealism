@@ -10,9 +10,6 @@ namespace Combat_Realism
 {
     public class JobGiver_TakeAndEquip : ThinkNode_JobGiver
     {
-        private CompInventory inventory;
-        private CompAmmoUser ammouser;
-
         private enum WorkPriority
         {
             None,
@@ -25,6 +22,18 @@ namespace Combat_Realism
 
         private WorkPriority GetPriorityWork(Pawn pawn)
         {
+            CompAmmoUser primaryammouser = pawn.equipment.Primary.TryGetComp<CompAmmoUser>();
+
+            if (pawn.Faction.IsPlayer && pawn.equipment.Primary != null && pawn.equipment.Primary.TryGetComp<CompAmmoUser>() != null)
+            {
+                Loadout loadout = pawn.GetLoadout();
+             // if (loadout != null && !loadout.Slots.NullOrEmpty())
+                if (loadout != null && loadout.SlotCount > 0)
+                {
+                    return WorkPriority.None;
+                }
+            }
+
             if (pawn.kindDef.trader)
             {
                 return WorkPriority.None;
@@ -34,22 +43,19 @@ namespace Combat_Realism
                 return WorkPriority.None;
             }
 
-            if (pawn.TryGetComp<CompInventory>() != null
-                && ((pawn.TryGetComp<CompInventory>().currentWeight >= pawn.TryGetComp<CompInventory>().capacityWeight / 2f)
-                || (pawn.TryGetComp<CompInventory>().currentBulk >= pawn.TryGetComp<CompInventory>().capacityBulk / 2f)))
-            {
-                return WorkPriority.Unloading;
-            }
-
             if (!pawn.Faction.IsPlayer && pawn.equipment.Primary == null)
             {
-                return WorkPriority.Weapon;
+                if (Unload(pawn))
+                {
+                    return WorkPriority.Unloading;
+                }
+                else return WorkPriority.Weapon;
             }
 
-            if (pawn.equipment.Primary != null && pawn.equipment.Primary.TryGetComp<CompAmmoUser>() != null)
+            if (pawn.equipment.Primary != null && primaryammouser != null)
             {
                 int ammocount = 0;
-                foreach (ThingDef ammoDef in pawn.equipment.Primary.TryGetComp<CompAmmoUser>().Props.ammoSet.ammoTypes)
+                foreach (ThingDef ammoDef in primaryammouser.Props.ammoSet.ammoTypes)
                 {
                     Thing ammoThing;
                     ammoThing = pawn.TryGetComp<CompInventory>().ammoList.Find(thing => thing.def == ammoDef);
@@ -58,18 +64,30 @@ namespace Combat_Realism
                         ammocount += ammoThing.stackCount;
                     }
                 }
-                if (ammocount < pawn.equipment.Primary.TryGetComp<CompAmmoUser>().Props.magazineSize)
+                float atw = primaryammouser.currentAmmo.GetStatValueAbstract(CR_StatDefOf.Bulk);
+                if ((ammocount < (1.5f / atw)) && ((1.5f / atw) > 3))
                 {
-                    return WorkPriority.LowAmmo;
+                    if (Unload(pawn))
+                    {
+                        return WorkPriority.Unloading;
+                    }
+                    else return WorkPriority.LowAmmo;
                 }
-                if (ammocount < pawn.equipment.Primary.TryGetComp<CompAmmoUser>().Props.magazineSize * 3)
+                if (!PawnUtility.EnemiesAreNearby(pawn, 30, true))
                 {
-                    return WorkPriority.Ammo;
+                    if ((ammocount < (3.5f / atw)) && ((3.5f / atw) > 4))
+                    {
+                        if (Unload(pawn))
+                        {
+                            return WorkPriority.Unloading;
+                        }
+                        else return WorkPriority.Ammo;
+                    }
                 }
             }
 
             if (!pawn.Faction.IsPlayer && pawn.equipment.Primary != null
-                && PawnUtility.EnemiesAreNearby(pawn, 30, true)
+                && !PawnUtility.EnemiesAreNearby(pawn, 30, true)
                 || (!pawn.apparel.BodyPartGroupIsCovered(BodyPartGroupDefOf.Torso)
                 || !pawn.apparel.BodyPartGroupIsCovered(BodyPartGroupDefOf.Legs)))
             {
@@ -81,16 +99,6 @@ namespace Combat_Realism
 
         public override float GetPriority(Pawn pawn)
         {
-
-            if (pawn.Faction.IsPlayer && pawn.equipment.Primary != null && pawn.equipment.Primary.TryGetComp<CompAmmoUser>() != null)
-            {
-                Loadout loadout = pawn.GetLoadout();
-                if (loadout != null && loadout.SlotCount > 0)
-                {
-                    return 0f;
-                }
-            }
-
             var priority = GetPriorityWork(pawn);
 
             if (priority == WorkPriority.Unloading) return 9.2f;
@@ -116,6 +124,10 @@ namespace Combat_Realism
             {
                 return null;
             }
+            if (pawn.Faction.IsPlayer && pawn.Drafted)
+            {
+                return null;
+            }
 
             /*
             Log.Message(pawn.ToString() +  " priority:" + (GetPriorityWork(pawn)).ToString());
@@ -125,8 +137,10 @@ namespace Combat_Realism
             Log.Message(pawn.ToString() + "currentBulk: " + pawn.TryGetComp<CompInventory>().currentBulk.ToString());
             */
 
-            inventory = pawn.TryGetComp<CompInventory>();
-            ammouser = pawn.TryGetComp<CompAmmoUser>();
+            CompInventory inventory = pawn.TryGetComp<CompInventory>();
+            CompAmmoUser ammouser = pawn.TryGetComp<CompAmmoUser>();
+            CompAmmoUser primaryammouser = pawn.equipment.Primary.TryGetComp<CompAmmoUser>();
+
             if (inventory != null)
             {
                 Room room = RoomQuery.RoomAtFast(pawn.Position, pawn.Map);
@@ -134,13 +148,13 @@ namespace Combat_Realism
                 // Drop excess weapon
                 if (!pawn.Faction.IsPlayer && pawn.equipment.Primary != null && GetPriorityWork(pawn) == WorkPriority.Unloading && inventory.rangedWeaponList.Count >= 1)
                 {
-                    Thing ListGun = pawn.TryGetComp<CompInventory>().rangedWeaponList.Find(thing => pawn.equipment != null && pawn.equipment.Primary != null && thing.TryGetComp<CompAmmoUser>() != null && thing.def != pawn.equipment.Primary.def);
+                    Thing ListGun = inventory.rangedWeaponList.Find(thing => pawn.equipment != null && pawn.equipment.Primary != null && thing.TryGetComp<CompAmmoUser>() != null && thing.def != pawn.equipment.Primary.def);
                     if (ListGun != null)
                     {
                         Thing ammoListGun = null;
                         foreach (ThingDef ListGunDef in ListGun.TryGetComp<CompAmmoUser>().Props.ammoSet.ammoTypes)
                         {
-                            if (pawn.TryGetComp<CompInventory>().ammoList.Find(thing => thing.def == ListGunDef) == null)
+                            if (inventory.ammoList.Find(thing => thing.def == ListGunDef) == null)
                             {
                                 ammoListGun = ListGun;
                                 break;
@@ -162,20 +176,20 @@ namespace Combat_Realism
                 if (!pawn.Faction.IsPlayer && inventory.ammoList.Count > 1 && GetPriorityWork(pawn) == WorkPriority.Unloading)
                 {
                     Thing WrongammoThing = null;
-                    foreach (ThingDef WrongammoDef in pawn.equipment.Primary.TryGetComp<CompAmmoUser>().Props.ammoSet.ammoTypes)
+                    foreach (ThingDef WrongammoDef in primaryammouser.Props.ammoSet.ammoTypes)
                     {
-                        WrongammoThing = pawn.TryGetComp<CompInventory>().ammoList.Find(thing => thing.def != WrongammoDef);
+                        WrongammoThing = inventory.ammoList.Find(thing => thing.def != WrongammoDef);
                         break;
                     }
                     if (WrongammoThing != null)
                     {
-                        Thing InvListGun = pawn.TryGetComp<CompInventory>().rangedWeaponList.Find(thing => pawn.equipment != null && pawn.equipment.Primary != null && thing.TryGetComp<CompAmmoUser>() != null && thing.def != pawn.equipment.Primary.def);
+                        Thing InvListGun = inventory.rangedWeaponList.Find(thing => pawn.equipment != null && pawn.equipment.Primary != null && thing.TryGetComp<CompAmmoUser>() != null && thing.def != pawn.equipment.Primary.def);
                         if (InvListGun != null)
                         {
                             Thing ammoInvListGun = null;
                             foreach (ThingDef InvListGunDef in InvListGun.TryGetComp<CompAmmoUser>().Props.ammoSet.ammoTypes)
                             {
-                                ammoInvListGun = pawn.TryGetComp<CompInventory>().ammoList.Find(thing => thing.def == InvListGunDef);
+                                ammoInvListGun = inventory.ammoList.Find(thing => thing.def == InvListGunDef);
                                 break;
                             }
                             if (ammoInvListGun != null && ammoInvListGun != WrongammoThing)
@@ -268,9 +282,9 @@ namespace Combat_Realism
 
                 if ((GetPriorityWork(pawn) == WorkPriority.Ammo || GetPriorityWork(pawn) == WorkPriority.LowAmmo) 
                     && pawn.equipment != null && pawn.equipment.Primary != null 
-                    && pawn.equipment.Primary.TryGetComp<CompAmmoUser>() != null)
+                    && primaryammouser != null)
                 {
-                    List<ThingDef> curAmmoList = (from ThingDef g in pawn.equipment.Primary.TryGetComp<CompAmmoUser>().Props.ammoSet.ammoTypes
+                    List<ThingDef> curAmmoList = (from ThingDef g in primaryammouser.Props.ammoSet.ammoTypes
                                                   select g).ToList<ThingDef>();
 
                     if (curAmmoList.Count > 0 && (GetPriorityWork(pawn) == WorkPriority.Ammo || GetPriorityWork(pawn) == WorkPriority.LowAmmo))
@@ -292,7 +306,8 @@ namespace Combat_Realism
                                 if (thd == th.def)
                                 {
                                     //Defence from low count loot spam
-                                    if (th.stackCount > pawn.equipment.Primary.TryGetComp<CompAmmoUser>().Props.magazineSize)
+                                    float thw = (th.GetStatValue(CR_StatDefOf.Bulk)) * th.stackCount;
+                                    if (thw > 0.5f)
                                     {
                                         if (pawn.Faction.IsPlayer)
                                         {
@@ -330,7 +345,7 @@ namespace Combat_Realism
                                                 {
                                                     return new Job(JobDefOf.TakeInventory, th)
                                                     {
-                                                        count = numToCarry,
+                                                        count = Mathf.RoundToInt(numToCarry * 0.8f),
                                                         expiryInterval = 150,
                                                         checkOverrideOnExpire = true,
                                                         canBash = true,
@@ -440,6 +455,20 @@ namespace Combat_Realism
                 }
                 return MeleeOrWaitJob(pawn, thing, cellBeforeBlocker);
             }
+        }
+
+        private static bool Unload(Pawn pawn)
+        {
+            var inv = pawn.TryGetComp<CompInventory>();
+            if (inv != null
+            && !pawn.Faction.IsPlayer
+            && (pawn.jobs.curJob != null && pawn.jobs.curJob.def != JobDefOf.Steal)
+            && ((inv.capacityWeight - inv.currentWeight < 3f)
+            || (inv.capacityBulk - inv.currentBulk < 4f)))
+            {
+                return true;
+            }
+            else return false;
         }
 
         private static Job MeleeOrWaitJob(Pawn pawn, Thing blocker, IntVec3 cellBeforeBlocker)

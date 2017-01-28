@@ -137,7 +137,7 @@ namespace Combat_Realism
                 workingInvList.AddRange(SelPawnForGear.inventory.innerContainer);
                 for (int i = 0; i < workingInvList.Count; i++)
                 {
-                    DrawThingRow(ref num, viewRect.width, workingInvList[i]);
+                    DrawThingRow(ref num, viewRect.width, workingInvList[i].GetInnerIfMinified());
                 }
             }
             if (Event.current.type == EventType.Layout)
