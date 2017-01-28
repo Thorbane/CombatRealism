@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -119,11 +120,11 @@ namespace Combat_Realism
 
         private IntVec3 GetFleeDest(Pawn pawn, List<Thing> threats)
         {
-            IntVec3 bestPos = pawn.Position;
-            float bestScore = -1f;
-            TraverseParms traverseParms = TraverseParms.For(pawn, Danger.Deadly, TraverseMode.ByPawn, false);
-            RegionTraverser.BreadthFirstTraverse(pawn.Position.GetRegion(pawn.Map), (from, reg) => reg.Allows(traverseParms, false), delegate (Region reg)
-            {
+			IntVec3 bestPos = pawn.Position;
+			float bestScore = -1f;
+			TraverseParms traverseParms = TraverseParms.For(pawn, Danger.Deadly, TraverseMode.ByPawn, false);
+			RegionTraverser.BreadthFirstTraverse(pawn.GetRegion(), (Region from, Region reg) => reg.Allows(traverseParms, false), delegate(Region reg)
+			{
                 Danger danger = reg.DangerFor(pawn);
                 foreach (IntVec3 current in reg.Cells)
                 {

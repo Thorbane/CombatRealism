@@ -65,7 +65,7 @@ namespace Combat_Realism
                     }
                 }
                 float atw = primaryammouser.currentAmmo.GetStatValueAbstract(CR_StatDefOf.Bulk);
-                if ((ammocount < (2f / atw)) && ((2f / atw) > 3))
+                if ((ammocount < (1.5f / atw)) && ((1.5f / atw) > 3))
                 {
                     if (Unload(pawn))
                     {
@@ -73,13 +73,16 @@ namespace Combat_Realism
                     }
                     else return WorkPriority.LowAmmo;
                 }
-                if ((ammocount < (3.5f / atw)) && ((3.5f / atw) > 4))
+                if (!PawnUtility.EnemiesAreNearby(pawn, 30, true))
                 {
-                    if (Unload(pawn))
+                    if ((ammocount < (3.5f / atw)) && ((3.5f / atw) > 4))
                     {
-                        return WorkPriority.Unloading;
+                        if (Unload(pawn))
+                        {
+                            return WorkPriority.Unloading;
+                        }
+                        else return WorkPriority.Ammo;
                     }
-                    else return WorkPriority.Ammo;
                 }
             }
 
@@ -118,6 +121,10 @@ namespace Combat_Realism
         protected override Job TryGiveJob(Pawn pawn)
         {
             if (!pawn.RaceProps.Humanlike)
+            {
+                return null;
+            }
+            if (pawn.Faction.IsPlayer && pawn.Drafted)
             {
                 return null;
             }
